@@ -32,7 +32,7 @@ class Agent(models.Model):
     organization = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.user.username
+        return self.user.email
 
 
 def post_user_created_signal(sender, instance, created, **kwargs):
