@@ -4,8 +4,10 @@
         <div class="container px-5 py-24 mx-auto flex flex-wrap">
             <div class="mb-6 py-6 flex justify-between items-center w-full border-b border-gray-200">
                 <h1 class="text-4xl text-gray-800">Leads</h1>
-                <a class="text-gray-500 hover:text-[#6366f1] transition"
-                   href="{% url 'leads:lead-create' %}">Create a new lead</a>
+                {% if request.user.is_organizer %}
+                    <a class="text-gray-500 hover:text-[#6366f1] transition"
+                       href="{% url 'leads:lead-create' %}">Create a new lead</a>
+                {% endif %}
             </div>
             <div class="flex flex-wrap -m-4">
                 {% for lead in leads %}
