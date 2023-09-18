@@ -12,9 +12,7 @@ DEBUG = env('DEBUG')
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'django-crm.fly.dev']
-CSRF_TRUSTED_ORIGINS = ['https://django-crm.fly.dev/']
-
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 # Application definition
 
