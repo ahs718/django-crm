@@ -1,5 +1,7 @@
 # Django-CRM
 
+<img width="1440" alt="Screenshot 2023-09-18 at 1 17 32 PM" src="https://github.com/ahs718/django-crm/assets/101739679/24a96d91-50d4-4942-afa0-32bfa10cdf83" />
+
 This repository holds the source code for a CRM developed using Django.
 
 ## Tech Stack
@@ -52,3 +54,13 @@ Inside the `djcrm/` directory, there is a `.env.example` file with the required 
 ```bash
 python3 manage.py runserver
 ```
+
+## Image Gallery
+
+<img width="1440" alt="Screenshot 2023-09-18 at 1 17 47 PM" src="https://github.com/ahs718/django-crm/assets/101739679/ce1d0fae-5b1c-400b-87e7-8bce752f3f40" />
+
+<img width="1440" alt="Screenshot 2023-09-18 at 1 17 57 PM" src="https://github.com/ahs718/django-crm/assets/101739679/4fb6ab20-d09c-40d9-a021-98f830c6f64a" />
+
+<img width="1440" alt="Screenshot 2023-09-18 at 1 18 07 PM" src="https://github.com/ahs718/django-crm/assets/101739679/098a2564-e660-4ee2-b6cb-572f2fa76d82" />
+
+<img width="1440" alt="Screenshot 2023-09-18 at 1 18 24 PM" src="https://github.com/ahs718/django-crm/assets/101739679/c51b4fe9-2e3e-43fb-9d13-5e3ba1c97d6c" />
