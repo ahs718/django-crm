@@ -9,7 +9,7 @@ from django.views import generic
 
 from agents.mixins import OrganizerAndLoginRequiredMixin
 
-from .forms import (AssignAgentForm, CustomUserCreationForm,
+from .forms import (AssignAgentForm, CategoryModelForm, CustomUserCreationForm,
                     LeadCategoryUpdateForm, LeadModelForm)
 from .models import Category, Lead
 
@@ -203,3 +203,49 @@ class LeadCategoryUpdateView(LoginRequiredMixin, generic.UpdateView):
 
     def get_success_url(self):
         return reverse("leads:lead-detail", kwargs={"pk": self.get_object().id})
+
+
+class CategoryCreateView(OrganizerAndLoginRequiredMixin, generic.CreateView):
+    template_name = "leads/category_create.html"
+    form_class = CategoryModelForm
+
+    def get_success_url(self):
+        return reverse("leads:category-list")
+
+    def form_valid(self, form):
+        category = form.save(commit=False)
+        category.organization = self.request.user.userprofile
+        category.save()
+        return super(CategoryCreateView, self).form_valid(form)
+
+
+class CategoryUpdateView(OrganizerAndLoginRequiredMixin, generic.UpdateView):
+    template_name = "leads/category_update.html"
+    form_class = CategoryModelForm
+    context_object_name = "category"
+
+    def get_success_url(self):
+        return reverse("leads:category-list")
+
+    def get_queryset(self):
+        user = self.request.user
+        # Initial queryset of leads for the entire organization
+        if user.is_organizer:
+            queryset = Category.objects.filter(organization=user.userprofile)
+        else:
+            queryset = Category.objects.filter(
+                organization=user.agent.organization)
+        return queryset
+
+
+class CategoryDeleteView(OrganizerAndLoginRequiredMixin, generic.DeleteView):
+    template_name = "leads/category_delete.html"
+    context_object_name = "category"
+
+    def get_queryset(self):
+        user = self.request.user
+        # Initial queryset of leads for the entire organization
+        return Category.objects.filter(organization=user.userprofile)
+
+    def get_success_url(self):
+        return reverse("leads:category-list")
