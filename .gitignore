@@ -161,3 +161,6 @@ cython_debug/
 
 static_root/
 node_modules/
+data/
+
+docker-compose.yml
